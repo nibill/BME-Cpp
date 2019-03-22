@@ -1,3 +1,13 @@
+/* Exercise 01
+ *
+ * @author Thomas Buchegger
+ * @email thomas.buchegger@students.unibe.ch
+ * @created  06.03.2019
+ *
+ * University of Bern / Bern University of Applied Sciences
+ * Course 394661-FS2019-0: C++ Programming I
+ */
+
 #include <iostream>     // provides output to stdout with cout
 #include <cmath>        // declares a set of functions to compute common mathematical operations and transformations
 #include <iomanip>      // providing parametric manipulators

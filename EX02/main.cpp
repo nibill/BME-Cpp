@@ -1,3 +1,13 @@
+/* Exercise 02
+ *
+ * @author Thomas Buchegger
+ * @email thomas.buchegger@students.unibe.ch
+ * @created  13.03.2019
+ *
+ * University of Bern / Bern University of Applied Sciences
+ * Course 394661-FS2019-0: C++ Programming I
+ */
+
 #include <iostream>
 #include <random>
 #include <stack>

@@ -1,4 +1,4 @@
-/* Exercise 3 - ""
+/* Exercise 3
  *
  * @author Thomas Buchegger
  * @email thomas.buchegger@students.unibe.ch
