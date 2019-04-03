@@ -23,15 +23,21 @@ void Library::printInventory()
 void Library::cleanup()
 {
     cout << "Cleanup inventory" << endl;
-    for(auto it = begin(this->lib); it != end(this->lib);)
+    for(vector<Book>::iterator it = begin(this->lib); it != end(this->lib);)
     {
         if(!it->isValid())
         {
-            it = this->lib.erase(it);
+            it = this->deleteBook(it);
         }
         else
         {
             ++it;
         }
     }
+}
+
+vector<Book>::iterator Library::deleteBook(vector<Book>::iterator it)
+{
+    cout << "Removing: " << static_cast<Book>(*it) << endl;
+    return this->lib.erase(it);
 }

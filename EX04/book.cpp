@@ -8,26 +8,32 @@ using namespace std;
 
 bool Book::isValid()
 {
-    if(this->m_isbn.size() != 10) return false;
+    this->m_isValid = this->isInputValid() && this->isISBNValid();
+
+    return this->m_isValid;
+}
+
+bool Book::isInputValid()
+{
+    return !this->m_author.empty() && !this->m_isbn.empty() && !this->m_title.empty();
+}
+
+bool Book::isISBNValid()
+{
     string isbn = this->m_isbn;
     isbn.erase(remove(isbn.begin(), isbn.end(), '-'), isbn.end());
+    if(isbn.size() != 10) return false;
+    int modsum{0};
+    for(unsigned long i = 0; i<10; i++)
+    {
+        modsum += stoi(isbn.substr(i, 1)) * (static_cast<int>(i)+1);
+    }
 
-    int i = stoi(isbn.substr(9, 1));
-    int check = (1 * stoi(isbn.substr(0, 1)) +
-                 2 * stoi(isbn.substr(1, 1)) +
-                 3 * stoi(isbn.substr(2, 1)) +
-                 4 * stoi(isbn.substr(3, 1)) +
-                 5 * stoi(isbn.substr(4, 1)) +
-                 6 * stoi(isbn.substr(5, 1)) +
-                 7 * stoi(isbn.substr(6, 1)) +
-                 8 * stoi(isbn.substr(7, 1)) +
-                 9 * stoi(isbn.substr(8, 1))) % 11;
-
-    return i == check;
+    return modsum;
 }
 
 ostream& operator<<(ostream& os, const Book& book)
 {
-    os << "Book(title=\"" <<book.m_title << "\", author=\"" << book.m_author << "\", isbn=\"" << book.m_isbn << "\")";
+    os << "Book(title=\"" <<book.m_title << "\", author=\"" << book.m_author << "\", isbn=\"" << book.m_isbn << "\", validityStatus=\"" << book.m_isValid << "\")";
     return os;
 }

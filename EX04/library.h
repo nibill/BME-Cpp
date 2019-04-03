@@ -10,6 +10,7 @@ class Library
 {
 private:
     vector<Book>lib;
+    vector<Book>::iterator deleteBook(vector<Book>::iterator it);
 public:
     Library();
     void addBook(Book book);

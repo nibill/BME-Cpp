@@ -43,7 +43,7 @@ int ex3_2_2_b()
     *pNumberCopy = 30;
     cout << "*pointToAnInt: " << *pointToAnInt << endl;
     delete pNumberCopy;
-    //delete pointToAnInt;
+    delete pointToAnInt;
     return 0;
 }
 
