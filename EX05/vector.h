@@ -18,7 +18,7 @@ public:
     ~Vector();
 
     size_t size();
-    int at(size_t idx);
+    int at(size_t i);
     void push_back(int addElem);
     void pop_back();
     void clear();
