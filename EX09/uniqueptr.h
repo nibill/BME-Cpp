@@ -6,143 +6,98 @@
 template<class T1>
 class UniquePtr
 {
-
 protected:
-
-    // define the pointe
-
-    T1 *m_ptr;
-
+    T1 *mPtr;
 public:
-
-    UniquePtr(T1 *ptr= nullptr):m_ptr(ptr){}
-
+    UniquePtr(T1 *ptr= nullptr):mPtr(ptr){}
     ~UniquePtr()
     {
-        delete m_ptr;
+        delete mPtr;
     }
 
-    // delete Copy constructor
     UniquePtr(const UniquePtr &copy_ptr) = delete;
-
-    // move constructor
     UniquePtr(UniquePtr &&move_ptr)
     {
-        // check if move ptr is null
-        if (move_ptr.m_ptr != nullptr)
+        if (move_ptr.mPtr == nullptr)
         {
-              m_ptr = move_ptr.m_ptr;
-              // set old pointer to null ptr
-             move_ptr.m_ptr = nullptr;
+            std::cout << "Pointer is empty."<<std::endl;
+            return;
         }
-        else
-        {
-            std::cout<<"sorry, no move today..."<<std::endl;
-        }
+        mPtr = move_ptr.mPtr;
+        move_ptr.mPtr = nullptr;
     }
 
-    // Dereferencing Operators
     T1& operator* ()
     {
-        return *m_ptr;
+        return *mPtr;
     }
 
     T1* operator-> ()
     {
-        return m_ptr;
+        return mPtr;
     }
 
-    //disable = operator!
-   void operator= (UniquePtr &ptr) = delete;
-
-    // overloading  = operator to make a move out of it..
-    T1& operator= ( UniquePtr &&ptr)
+    void operator= (UniquePtr &move_ptrp) = delete;
+    T1& operator= ( UniquePtr &&move_ptr)
     {
-        // check if possible ptr is null...
-        if (ptr.m_ptr != nullptr)
+        if (move_ptr.mPtr == nullptr)
         {
-              m_ptr = ptr.m_ptr;
-              // set old pointer to null ptr
-             ptr.m_ptr = nullptr;
+             std::cout << "Pointer is empty."<<std::endl;
+             return *this->mPtr;
         }
-        else
-        {
-            std::cout<<"no move today..."<<std::endl;
-        }
+        mPtr = move_ptr.mPtr;
+        move_ptr.mPtr = nullptr;
 
-        return *this->m_ptr;
+        return *this->mPtr;
     }
 };
 
 template<class T1>
 class UniquePtr<T1[]>
 {
-
 protected:
-
-    // define the pointe
-
-    T1 *m_ptr;
-
+    T1 *mPtr;
 public:
-
-    UniquePtr(T1 *ptr= nullptr):m_ptr(ptr){}
-
+    UniquePtr(T1 *ptr= nullptr):mPtr(ptr){}
     ~UniquePtr()
     {
-        delete[] m_ptr;
+        delete[] mPtr;
     }
 
-    // delete Copy constructor
-    UniquePtr(const UniquePtr<T1[]> &copy_ptr) = delete;
-
-    // move constructor
-    UniquePtr(UniquePtr<T1[]> &&move_ptr)
+    UniquePtr(const UniquePtr &copy_ptr) = delete;
+    UniquePtr(UniquePtr &&move_ptr)
     {
-        // check if move ptr is null
-        if (move_ptr.m_ptr != nullptr)
+        if (move_ptr.mPtr == nullptr)
         {
-              m_ptr = move_ptr.m_ptr;
-              // set old pointer to null ptr
-             move_ptr.m_ptr = nullptr;
+            std::cout << "Pointer is empty."<<std::endl;
+            return;
         }
-        else
-        {
-            std::cout<<"sorry, no move today..."<<std::endl;
-        }
+        mPtr = move_ptr.mPtr;
+        move_ptr.mPtr = nullptr;
     }
 
-    // Dereferencing Operators
     T1& operator* ()
     {
-        return *m_ptr;
+        return *mPtr;
     }
 
     T1* operator-> ()
     {
-        return m_ptr;
+        return mPtr;
     }
 
-    //disable = operator!
-   void operator= (UniquePtr<T1[]> &ptr) = delete;
-
-    // overloading  = operator to make a move out of it..
-    T1& operator= ( UniquePtr &&ptr)
+    void operator= (UniquePtr &move_ptrp) = delete;
+    T1& operator= ( UniquePtr &&move_ptr)
     {
-        // check if possible ptr is null...
-        if (ptr.m_ptr != nullptr)
+        if (move_ptr.mPtr == nullptr)
         {
-              m_ptr = ptr.m_ptr;
-              // set old pointer to null ptr
-             ptr.m_ptr = nullptr;
+             std::cout << "Pointer is empty."<<std::endl;
+             return *this->mPtr;
         }
-        else
-        {
-            std::cout<<"no move today..."<<std::endl;
-        }
+        mPtr = move_ptr.mPtr;
+        move_ptr.mPtr = nullptr;
 
-        return *this->m_ptr;
+        return *this->mPtr;
     }
 };
-
 #endif // UNIQUEPTR_H
