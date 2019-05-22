@@ -1,5 +1,5 @@
 # Set Name of project and language
-project(EX08 LANGUAGES CXX)
+project(EX07 LANGUAGES CXX)
 
 # Set cmake version
 cmake_minimum_required(VERSION 3.0)
@@ -10,7 +10,14 @@ set(CMAKE_BUILD_TYPE "Debug")
 # Create executable using the specified src
 add_executable(${PROJECT_NAME}
     main.cpp
-    stack.h)
+    circle.cpp
+    circle.h
+    triangle.cpp
+    triangle.h
+    square.cpp
+    square.h
+    shape.cpp
+    shape.h)
 
 # Define required c++ standard to C++11
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)

@@ -15,42 +15,47 @@ using namespace std;
 
 int main()
 {
-    cout << "Please choose what action you'd like to perform" << endl;
-    cout << "1 - push to stack" << endl;
-    cout << "2 - pop from stack" << endl;
-    cout << "3 - peek stack" << endl;
+    cout << "-----------------------string-----------------------" << endl;
+    string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    Stack<string, 10> string_stack;
+    for (unsigned long i = 3; i < 13; ++i)
+    {
+        string_stack.push(alphabet.substr(i-3,3));
+    }
+    string_stack.peek();
+    string_stack.pop();
+    string_stack.peek();
+    string_stack.print();
+    cout << endl;
 
+    cout << "------------------------int--------------------------" << endl;
+    Stack<int, 10> int_stack;
+    for (unsigned long i = 0; i < 10; ++i)
+    {
+        int_stack.push(static_cast<int>(i));
+    }
+    int_stack.peek();
+    int_stack.pop();
+    int_stack.peek();
+    int_stack.print();
+    cout << endl;
 
+    cout << "------------------------double-----------------------" << endl;
+    Stack<double, 10> double_stack;
+    for (unsigned long i = 0; i < 3; ++i)
+    {
+        double f = (double)rand() / RAND_MAX;
 
-    Stack s(10);
+        double_stack.push(static_cast<double>(f));
+    }
+    double_stack.peek();
+    double_stack.pop();
+    double_stack.pop();
+    double_stack.pop();
+    double_stack.pop();
+    double_stack.peek();
+    double_stack.print();
 
-    s.push(20);
-    s.push(10);
-    s.pop();
-    s.push(22);
-    s.push(43);
-    s.print();
-
-//    int i = 0;
-//    cin >> i;
-//    int value = 0;
-//    while(true)
-//    {
-//        if (i == 1)
-//        {
-//            cout << "Please enter a value:" << endl;
-//            cin >> value;
-//            s.push(value);
-//        }
-//        else if(i == 2)
-//        {
-//            s.pop();
-//        }
-//        else if(i == 3)
-//        {
-//            s.peek();
-//        }
-//        cin >> i;
-//    }
     return 0;
 }
+
